@@ -1,0 +1,7 @@
+.coverage
+.tox
+.pytest_cache
+.idea
+ve
+*.egg-info
+*.pyc
