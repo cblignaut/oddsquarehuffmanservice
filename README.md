@@ -57,11 +57,7 @@ To decode a huffman encoded string a stored frequency table is required.
 Note: For this example the service will store all encoded strings in memory (this is not a production solution).
 
 Run the huffman decode method in the nameko shell:
-   1. For a previously encoded string ('test'):
-   ```bash
-      n.rpc.service.huffman_decode('010110')
-   ```
-   2. With a frequency table (this is another option):
+   1. With a frequency table (recommended option):
    ```bash
       from collections import Counter
       
@@ -69,7 +65,11 @@ Run the huffman decode method in the nameko shell:
       
       n.rpc.service.huffman_decode('110101110100', frequency_table)
    ```
-
+   2. For a previously encoded string ('test'), please read warning in the design decisions before using this option:
+   ```bash
+      n.rpc.service.huffman_decode('010110')
+   ```
+ 
 ## Task
 
 It was a fun open-ended task with a few gotchas (see design decisions). Nameko looks like a good alternative to flask for microservices.  
