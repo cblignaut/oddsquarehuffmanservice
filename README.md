@@ -22,40 +22,53 @@ Tested with:
 2. Install python 3.6, docker and docker-compose
 3. Go to root directory of cloned repo
 4. Run to build docker service container:
-   > docker-compose build
+```bash
+   docker-compose build
+```
 5. Run to start docker services as a daemon:
-   > docker-compose up -d
+```bash
+   docker-compose up -d
+```
 
 ## Usage
 
 ### Start nameko shell:
 1. Once the docker services are up (see installation)
 2. Bash into the docker service:
-   > docker exec -ti service bash 
+```bash
+   docker exec -ti service bash 
+```
 3. Run nameko shell:
-   > nameko shell --config config.yml
-
+```bash
+   nameko shell --config config.yml
+```
 ### Square odd numbers:
 Run the square odd numbers method in the nameko shell:
-   > n.rpc.service.square_odd_numbers([1,2,3,4,5])
-
+```bash
+   n.rpc.service.square_odd_numbers([1,2,3,4,5])
+```
 ### Huffman encode a list of strings:
 Run the huffman encode method in the nameko shell:
-   > n.rpc.service.huffman_encode(['test'])
-
+```bash
+   n.rpc.service.huffman_encode(['test'])
+```
 ### Huffman decode an encoded string:
 To decode a huffman encoded string a stored frequency table is required. 
 Note: For this example the service will store all encoded strings in memory (this is not a production solution).
 
 Run the huffman decode method in the nameko shell:
    1. For a previously encoded string ('test'):
-      > n.rpc.service.huffman_decode('010110') 
+   ```bash
+      n.rpc.service.huffman_decode('010110')
+   ```
    2. With a frequency table (this is another option):
-      > from collections import Counter
-      > 
-      > frequency_table = Counter("A man")
-      > 
-      > n.rpc.service.huffman_decode('110101110100', frequency_table)
+   ```bash
+      from collections import Counter
+      
+      frequency_table = Counter("A man")
+      
+      n.rpc.service.huffman_decode('110101110100', frequency_table)
+   ```
 
 ## Task
 
@@ -85,7 +98,10 @@ I used the bitarray module before which was written in CPython, I tested the dec
 To decode a huffman string we need a frequency table of the original string. The task didn't specify if we will get a frequency table. 
 
 I decided to create an optional argument for the frequency table but also store the frequency table of the previously encoded strings as a fallback in memory.
-> n.rpc.service.huffman_decode('110101110100', OPTIONAL_FREQUENCY_TABLE)
+
+```bash
+n.rpc.service.huffman_decode('110101110100', OPTIONAL_FREQUENCY_TABLE)
+```
 
     WARNING: WHEN USING THE huffman_decode() METHOD WITHOUT A FREQUENCY TABLE ARGUMENT:
 
