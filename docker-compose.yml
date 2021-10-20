@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        hostname: rabbitmq
+        image: 'rabbitmq:3.9'
+        ports:
+            - 5672:5672
+        restart: always
+    service:
+        build:
+            context: ./
+        hostname: service
+        container_name: service
+        depends_on:
+          - rabbitmq
